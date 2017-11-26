@@ -3,10 +3,14 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save#define signals so our profile model auto created/updated when we create/update user instances.
 from django.dispatch import receiver
 import datetime as dt
+from phonenumber_field.modelfields import PhoneNumberField
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)#USER Models
 	bio = models.TextField(max_length=500, blank=True)
+	website = models.CharField(max_length=30,blank=True)
+	email = models.EmailField()
+	phone_number = PhoneNumberField(max_length=10, blank=True)
 
 	def __str__(self):
 		return self.user.username
@@ -51,6 +55,7 @@ class Post(models.Model):
 	tags = models.ManyToManyField(Tags, blank=True)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+	photo = models.ImageField(upload_to = 'photos/')
 	caption = models.TextField(blank=True)
 
 	def __str__(self):
