@@ -11,7 +11,8 @@ class Profile(models.Model):
 	website = models.CharField(max_length=30,blank=True)
 	email = models.EmailField()
 	phone_number = PhoneNumberField(max_length=10, blank=True)
-
+	profile_pic = models.ImageField(upload_to = 'profile/', blank=True)
+	
 	def __str__(self):
 		return self.user.username
 
@@ -57,7 +58,8 @@ class Post(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	photo = models.ImageField(upload_to = 'photos/')
 	caption = models.TextField(blank=True)
-
+	#likes = models.IntegerField()
+	
 	def __str__(self):
 		return self.user.username
 	class Meta:
