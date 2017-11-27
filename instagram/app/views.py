@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import NewPostForm
+from .forms import NewPostForm,ProfilePicForm
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url = '/accounts/login/')
@@ -22,22 +22,14 @@ def timeline(request):
 
 	return render(request, 'timeline.html',{"form":form})
 
-# @login_required(login_url='/accounts/login/')
-# def login(request):
-# 	return render(request, 'timeline.html')
-
-# @login_required(login_url='/accounts/register/')
-# def register(request):
-# 	return render(request, 'timeline.html')
 
 
+def profile(request):
+	profile_pic = ProfilePicForm()
+	if request.method == 'POST':
+		profile_pic = ProfilePicForm(instance=request.user)
+		if profile_pic.is_valid():
+			profile_pic.save()
 
-# def profile(request):
-# 		profile_pic = ProfilePicForm()
-# 		if request.method == 'POST':
-# 			profile_pic = ProfilePicForm(instance=request.user)
-# 			if profile_pic.is_valid():
-# 				profile_pic.save()
-
-# 		return render(request, 'profile.html', {"profile_pic":profile_pic})
+	return render(request, 'profile.html', {"profile_pic":profile_pic})
 
