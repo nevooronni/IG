@@ -7,7 +7,12 @@ class NewPostForm(forms.ModelForm):
 		model=Post
 		fields=('photo',)
 
-class ProfilePicForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
+	class Meta:
+		model = User
+		fields = ('first_name','last_name',)		
+
+class ProfileForm(forms.ModelForm):
 	class Meta:
 		model=Profile
-		fields=('profile_pic',)
+		fields=('bio','website','phone_number','email','profile_pic',)
