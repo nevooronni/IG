@@ -1,24 +1,25 @@
 from django.shortcuts import render
+from .forms import NewPostForm
 
 def timeline(request):
-    return render(request, 'timeline.html')
+	current_user = request.user
+	if request.method == 'POST':
+		form = NewPostForm(request.POST,request.FILES)
 
-# def timeline(request):
-# 	current_user = request.user
-# 	if request.method == 'POST':
-# 		form = NewPostForm(request.POST,request.FILES)
+		if form.is_valid():
+			post = form.save(commit=False)#commit your post
+			post.user = current_user#save post to current user profile
+			post.save()#save the post 
 
-# 		if form.is_valid():
-# 			post = form.save(commit=False)#commit your post
-# 			post.user = current_user#save post to current user profile
-# 			post.save()#save the post 
+		elif comment_form.is_valid():
+			print('the comment form is working')
 
-# 		elif comment_form.is_valid():
-# 			print('the comment form is working')
+	else:
 
-# 	else:
+		form = NewPostForm()
 
-# 		form = NewPostForm()
+	return render(request, 'timeline.html',{"form":form})
+
 
 
 # 	return render(request,'all-app/timeline.html',{"form":form})		

@@ -1,2 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-<h1>Welcome to Instagram</h1>
+  {% block content %}
+  {{block.super}}
+    <h1>timeline</h1>
+  {% endblock %}

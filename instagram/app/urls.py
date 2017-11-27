@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns=[
     url('^$',views.timeline,name = 'timeline'),
+    # url('^profile/$',views.profile,name = 'profile')
 ]
