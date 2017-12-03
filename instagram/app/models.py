@@ -4,6 +4,12 @@ from django.db.models.signals import post_save#define signals so our profile mod
 from django.dispatch import receiver
 import datetime as dt
 from phonenumber_field.modelfields import PhoneNumberField
+from django.db.models import Sum
+from vote.models import VoteModel#import vote model
+from vote.managers import VotableManager
+
+#default images for profile
+DEFAULT = 'profile/index.jpeg'
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)#USER Models
@@ -11,15 +17,37 @@ class Profile(models.Model):
 	website = models.CharField(max_length=30,blank=True)
 	email = models.EmailField()
 	phone_number = PhoneNumberField(max_length=10, blank=True)
-	profile_pic = models.ImageField(upload_to = 'profile/', blank=True)
+	photo = models.ImageField(upload_to = 'profile/',blank=True,default=False)
 	
 	def __str__(self):
 		return self.user.username
 
+	# @classmethod
+	# def one_profile(cls,id):
+	# 	profile = Profile.objects.filter(user=user_id).all()
+		
 	@classmethod
 	def retrieve_profiles(cls):
-		all_profiles = Profile.objects.all()
+		all_profiles = Profile.objects.all().order_by('-id')
 		return all_profiles
+
+	@classmethod
+	def retrieve_other_profiles(cls,user_id):
+		profiles = Profile.objects.all()#get all profiles
+
+		other_profiles = []#empty profile list
+
+		for profile in profiles:
+
+			if profile.user.id != user_id:#check if current profile user id is equal to parameter
+				other_profiles.append(profile)
+
+		return other_profiles#return all profiles
+
+	@property
+	def photo_url(self):
+		if self.photo and hasattr(self.photo, 'url'):#return whether an object has an attribute with the same name
+			return self.photo.url
 
 #hooking up the create_user_profile and save_user_profile methods to the User model wherever a save evernt occurs
 @receiver(post_save, sender=User)
@@ -31,6 +59,10 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
 	instance.profile.save()#save a profile when saving a user
 
+@property 
+def photo_url(self):
+	if self.photo and hasattr(self.photo, 'url'):
+		return self.photo.url	
 
 class Tags(models.Model):
 	title = models.CharField(max_length=30, unique=True)
@@ -51,14 +83,16 @@ class Tags(models.Model):
 		tags = Tags.objects.all()
 		return tags
 
-class Post(models.Model):
+class Post(VoteModel, models.Model):
+	likes = VotableManager()
 	post_time = models.DateTimeField(auto_now_add=True)
 	tags = models.ManyToManyField(Tags, blank=True)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-	photo = models.ImageField(upload_to = 'photos/')
+	photo = models.ImageField(upload_to = 'photos/',blank=True,default=False)
 	caption = models.TextField(blank=True)
-	#likes = models.IntegerField()
+	like_add_count = models.PositiveIntegerField(default=0)
+	# like_remove_count = models.PositiveIntegerField(default=0)
 	
 	def __str__(self):
 		return self.user.username
@@ -74,3 +108,57 @@ class Post(models.Model):
 	def retrieve_posts(cls):
 		posts = Post.objects.all()
 		return posts
+
+	@classmethod
+	def retrieve_single_post(cls,pk):
+		post = cls.objects.get(pk=pk)
+		return post
+
+	@property
+	def image_url(self):
+		if self.photo and hasattr(self.photo, 'url'):#return whether an object has an attribute with the same name
+			return self.photo.url
+
+class Follow(models.Model):
+	user = models.ForeignKey(User)#defines the user
+	profile = models.ForeignKey(Profile)#follow a profile
+
+	def __str__(self):
+		return self.user.username
+
+	@classmethod
+	def retrieve_following(cls,user_id):
+		following = Follow.objects.filter(user=user_id).all()
+		return following 
+
+class Likes(models.Model):
+	user = models.ForeignKey(User,on_delete=models.CASCADE)#defines the user#cascaded deletes this objects when other related referenced objects are deleted too
+	post = models.ForeignKey(Post,on_delete=models.CASCADE)#the post to like
+	likes = models.PositiveIntegerField(null=True,blank = True)
+
+	def __str__(self):
+		return self.user.username
+
+	@classmethod
+	def retrieve_post_likes(cls,post_id):
+		post_likes = Likes.objects.filter(post=post_id)
+		return post_likes
+
+	@classmethod
+	def number_of_likes(cls,post_id):
+		post = Likes.objects.filter(post=post_id)
+		likes = post.aggregate(Sum('likes')).get('likes_sum',0)
+		return likes
+
+class Comments(models.Model):
+	user = models.ForeignKey(User,on_delete=models.CASCADE)#THE USER
+	post = models.ForeignKey(Post,on_delete=models.CASCADE)#post with the comments
+	comment = models.TextField(blank=True)
+
+	def __str__(self):
+		return self.user.username
+
+	@classmethod
+	def retrieve_post_comments(cls,post_id):
+		post_comments = Comments.objects.filter(post=post_id)
+		return post_comments

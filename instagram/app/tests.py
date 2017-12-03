@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User#import user models 
-from .models import Tags,Profile,Post
+from .models import Tags,Profile,Post,Follow,Likes,Comments
 
 class ProfileTestClass(TestCase):
 	'''
@@ -116,4 +116,109 @@ class PostsTestClass(TestCase):
 		self.assertTrue(len(all_posts) == len(posts))
 
 	
+class FollowTestClass(TestCase):
+	'''
+	test the follow class
+	'''
+	def test_instance(self):
+		'''
+		tests to see if it was instantiated properly
+		'''
+		self.neville = User(username = 'nevooronni')
+		self.neville.save()
 
+		self.chelsea = User(username = 'chelsea')
+		self.chelsea.save()
+
+		self.new_profile = Profile(user=self.neville,bio='bla bla blab bla')
+		self.follow = Follow(user=self.neville,profile=self.new_profile)
+
+		self.assertTrue(isinstance(self.follow, Follow))
+
+	def test_retrieve_following(self):
+		'''
+		test retrieve_following method
+		'''
+		self.neville = User(username = 'nevooronni')
+		self.neville.save()
+
+		self.chelsea = User(username = 'chelsea')
+		self.chelsea.save()
+
+		self.new_profile = Profile(user=self.neville,bio='bla bla blab bla')
+		self.new_post = Post(user=self.neville,caption='bla bla bla bla bla')
+		self.follow = Follow(user=self.neville,profile=self.new_profile)
+		
+		get_following = Follow.retrieve_following(self.neville.id)
+		following = Follow.objects.all()
+
+		self.assertTrue(len(get_following) == len(following))
+
+class LikesTestClass(TestCase):
+	'''
+	test for the likes class
+	'''
+	def setUp(self):
+		'''
+		setup method
+		'''
+		self.like = Likes(likes = 0)
+
+	def test_instance(self):
+		'''
+		test to check if the object is an instance of like class
+		'''
+		self.assertTrue(isinstance(self.like, Likes))
+
+	def test_retrieve_post_likes(self):
+		'''
+		test the retrieve_post_likes method
+		'''
+		get_likes = Likes.retrieve_post_likes(4990826417581240726341234)#still don't know
+
+		self.assertFalse(len(get_likes), 1)
+
+	def test_number_of_likes(self):
+		'''
+		test the number_of_likes method
+		'''
+		get_no_of_likes = Likes.number_of_likes(123412312351123412341234123412341234)
+
+		self.assertEqual(get_no_of_likes, 0)
+
+class CommentsTestClass(TestCase):
+	'''
+	test comments class
+	'''
+	def setUp(self):
+		'''
+		setup method
+		'''
+		self.comment = Comments(comment = 'bla bla bla bla bla bla')
+
+	def test_instance(self):
+		'''
+		test to see if the object is an instance of th comment class
+		'''
+		self.assertTrue(isinstance(self.comment, Comments))
+
+	def test_retrieve_post_comments(self):
+		'''
+		test the retrieve+_post_comments methods
+		'''
+		self.neville = User(username = 'nevooronni')
+		self.neville.save()
+
+		self.chelsea = User(username = 'chelsea')
+		self.chelsea.save()
+
+		self.new_profile = Profile(user=self.neville,bio='bla bla blab bla')
+		self.new_post = Post(user=self.neville,caption='bla bla bla bla bla')
+
+		self.comment = Comments(post=self.new_post,comment='bla bla bla')
+
+		get_comments = Comments.retrieve_post_comments(self.new_post.id)
+
+		comments = Comments.objects.all()
+
+		self.assertTrue(len(get_comments) == len(comments))

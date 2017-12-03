@@ -4,14 +4,36 @@
   {{block.super}}
   <div class="container profile">
     <div class="row">
-      <div class="col-md-6">
-        <img src="{{user.profile_pic.url}}" alt="profile pic">
-      </div>
-      <div class="col-md-6">
-        <h3>{{user.username}}<a href="{% url 'edit_profile' %}" class="btn btn-primary">edit profile</a></h3>
-        <p>0 posts 0 followers o following</p>
-        <h5>Neville Oronni</h5>
+      <div class="col-md-12">
+        {% if profile %}
+        <img src="{{profile.profile_pic.url}}" alt="profile pic">
+        {% endif %}
+        <h3>{{user.username}}</h3>
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary">edit profile</a>
+        <p>{{posts|length}} posts</p>
+        {% if following %}
+        <p>0 followers</p> 
+        <p>{{following|length}}  following</p>
+        {% endif %}
       </div>
     </div>
+    {% if posts %}
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12" style="display: inline;">
+          <h4>POSTS</h4>
+          {% for post in posts %}
+            <img src="{{post.photo.url}}" alt="posted photo" class="img-responsive" height="200px" width="300px" style="display: inline;">
+            <h4>{{post.caption}}</h4>
+          {% endfor %}
+        {% else %}
+          <h3>You have not posted anything yet</h3>
+        {% endif %}
+        {% for tag in tags %}
+          <h5>{{tag.title}}</h5>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
   </div>
 {% endblock %}

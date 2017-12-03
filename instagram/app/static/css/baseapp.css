@@ -1,3 +1,47 @@
 h1 {
   color: green;
 }
+
+/*#profPic {
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+}*/
+
+#blue {
+  color: blue;
+}
+
+#prof {
+  border-radius: 50%;
+}
+
+#following {
+  float: right;
+  margin-top: -45px;
+}
+
+.glyphicon-heart {
+  font-size: 28px;
+  color: red;
+}
+
+.glyphicon-comment {
+  font-size: 28px;
+  color: black;
+  margin-left: 14px;
+}
+
+#l {
+  margin-left: 7px;
+}
+
+#side {
+  position: relative;
+  left: 68px;
+  top: -30px;
+}
+
+#inline {
+  display: inline;
+}

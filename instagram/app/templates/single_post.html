@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    {{block.super}}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-lg-10">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <img src="{{post.profile.photo.url}}" alt="{{post.profile.user.username}}" class="img-responsive" height="50px" width="50px">
+              <h6 class="username">{{post.profile.user.username}}</h6>
+            </div>
+            
+            <div class="panel-body">
+              <img src="{{post.photo.url}}" alt="{{post.caption}}" class="img-responsive">
+              <h5 class="text-center">{{post.caption}}</h5>
+              <a href="{% url 'like' post.id %}"><i class="glyphicon glyphicon-heart"  id="likes"></i></a>
+              <a href="{% url 'comment' post.id %}" class="glyphicon
+              glyphicon-comment"></i></a>
+              <p id="l">{{post.like_count}} Likes</p>
+              <h3>comments</a></h3>
+              {% for comment in comments %}
+              <h5>
+                <span id="inline">
+                  <img src="{{comment.user.profile.photo.url}}" alt="{{comment.user.username}}" class="img-responsive" height="50px" width="50px">
+                  <span id="side"><strong>
+                 {{comment.user.username}}</strong></span>
+               </span>
+                <p>{{comment.comment}}</p>
+              </h5>
+              <hr>
+              {% endfor %}
+            </div>
+
+          </div>
+
+        </div>
+            
+      </div>
+
+    </div>
+
+{% endblock %}

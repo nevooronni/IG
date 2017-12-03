@@ -1,7 +1,67 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load bootstrap3 %}
+  {% load static %}
   {% block content %}
   {{block.super}}
+  <div class="container">
     <h1>timeline</h1>
     <a href="{% url 'profile' %}">profile</a>
+    <a href="{% url 'post' %}"><button type="submit" class="btn">Post</button></a>
+  </div>
+    <div class="container">
+      {% if following_posts %}
+        {% if profiles %}
+          <h3>Suggestions For You {{profiles|length}} people</h3>
+          <a href="{% url 'suggestions' %}"><h3>See All</h3></a>
+        {% endif %}
+        {% for follow in following_posts %}
+        <div class="row">
+          <div class="col-md-10 col-lg-10">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <img src="{{follow.profile.photo.url}}" alt="{{follow.profile.user.username}}" class="img-responsive" height="50px" width="50px" id="">
+                <p>
+                  <a href="" >{{follow.profile.user.username}}</a>
+                </p>
+                <p id="following">Following</p>
+              </div>
+              <div class="panel-body">
+                <a href="{% url 'single_post' follow.id %}">
+                  <img src="{{follow.photo.url}}" alt="{{follow.caption}}" class="img-responsive" height="250px" width="550px">
+                </a>
+                <!-- <h5 class="text-left">
+                   
+                </h5> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <h2 class="text-center" id="blue">You are not following anyone.</h2>  
+        <h3>Suggestions for you.</h3>
+        {% for profile in profiles %}
+        <div class="row">
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-7">
+            <div>
+              <img src="{{profile.photo_url|default_if_none:'/profile/images.png'}}" alt="profile photo" class="img-responsive" id="">
+              <h3>{{profile.user.username}}</h3>
+              <a href="{% url 'follow' profile.id %}" class="follow"><button>Follow</button></a>
+            </div>
+          </div>
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-1">
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+  {% endblock %}
+  {% block scripts %}
+    {{block.super}}
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
   {% endblock %}

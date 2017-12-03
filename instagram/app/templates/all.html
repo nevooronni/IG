@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+  {% load static %}
+  {% block content %}
+  {{block.super}}
+  <div class="container">
+    {% for profile in profiles %}
+      <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-7">
+          <div>
+            <img src="{{profile.photo_url|default_if_none:'/profile/images.png'}}" alt="profile photo" class="img-responsive" id="">
+            <h3>{{profile.user.username}}</h3>
+            <a href="{% url 'follow' profile.id %}" class="follow"><button>Follow</button></a>
+          </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-1">
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endblock %}

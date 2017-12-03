@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Edit Profile</h1>
+  {{block.super}}
+  <div class="container">
+    <div class="row">
+      <h1>Edit Profile</h1>
 
-  <form method="post">
-    {% csrf_token %}
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
-    <button type="submit">Save Changes</button>
-  </form>
+      <form action="{% url 'edit_profile' %}" method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
 
 {% endblock %}
