@@ -1,13 +1,11 @@
 from django.shortcuts import render,redirect
 from .forms import NewPostForm,UserForm,ProfileForm,ProfilePicForm,CommentForm
 from django.contrib.auth.decorators import login_required
-from .models import Post,Profile,Tags,Follow,Likes,Comments
+from .models import Post,Profile,Tags,Follow,Comments
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
-from vote.managers import VotableManager
-
-likes = VotableManager()
+from liked.models import Like
 
 @login_required(login_url = '/accounts/login/')
 def timeline(request):
@@ -182,17 +180,14 @@ def suggestions(request):
 
 @login_required(login_url = '/accounts/login/')
 def like(request,pk):
-	current_user = request.user
+	user = request.user
 	current_post = Post.objects.get(pk=pk)
 	post = Post.retrieve_single_post(pk)
-	user = request.user
-	user_id = user.id
+	# user_id = user.id
 
 	if user.is_authenticated:
-		like = post.likes.up(user_id)
-		print(like)
-		post.like_count = post.likes.count()
-		post.save()
+		like = Like(content_object=post,user=user)#like the specific post
+		like.save()#save the like
 	return redirect(single_post,current_post.pk)
 
 @login_required(login_url='/accounts/register')
@@ -203,11 +198,11 @@ def single_post(request,id):
 		comments = Comments.retrieve_post_comments(id)
 		# no_of_likes = Likes.number_of_likes(post_id=id)
 		# get_likes = Likes.retrieve_post_likes(post_id=id)
-	
+		like_count = current_post.likes.all().count()
 	except ObjectDoesNotExist:
 		raise Http404()
 
-	return render(request, 'single_post.html', {"post":current_post,"comments":comments})
+	return render(request, 'single_post.html', {"post":current_post,"comments":comments,"like_count":like_count})
 
 @login_required(login_url='/accounts/register')
 def comment(request,id):

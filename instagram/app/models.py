@@ -5,8 +5,10 @@ from django.dispatch import receiver
 import datetime as dt
 from phonenumber_field.modelfields import PhoneNumberField
 from django.db.models import Sum
-from vote.models import VoteModel#import vote model
-from vote.managers import VotableManager
+# from vote.models import VoteModel#import vote model
+# from vote.managers import VotableManager
+from liked.models import Like
+from django.contrib.contenttypes.fields import GenericRelation
 
 #default images for profile
 DEFAULT = 'profile/index.jpeg'
@@ -83,15 +85,15 @@ class Tags(models.Model):
 		tags = Tags.objects.all()
 		return tags
 
-class Post(VoteModel, models.Model):
-	likes = VotableManager()
+class Post(models.Model):
 	post_time = models.DateTimeField(auto_now_add=True)
 	tags = models.ManyToManyField(Tags, blank=True)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	photo = models.ImageField(upload_to = 'photos/',blank=True,default=False)
 	caption = models.TextField(blank=True)
-	like_add_count = models.PositiveIntegerField(default=0)
+	likes = GenericRelation(Like)
+		# upvote_count = models.PositiveIntegerField(default=0)
 	# like_remove_count = models.PositiveIntegerField(default=0)
 	
 	def __str__(self):
@@ -131,24 +133,24 @@ class Follow(models.Model):
 		following = Follow.objects.filter(user=user_id).all()
 		return following 
 
-class Likes(models.Model):
-	user = models.ForeignKey(User,on_delete=models.CASCADE)#defines the user#cascaded deletes this objects when other related referenced objects are deleted too
-	post = models.ForeignKey(Post,on_delete=models.CASCADE)#the post to like
-	likes = models.PositiveIntegerField(null=True,blank = True)
+# class Likes(models.Model):
+# 	user = models.ForeignKey(User,on_delete=models.CASCADE)#defines the user#cascaded deletes this objects when other related referenced objects are deleted too
+# 	post = models.ForeignKey(Post,on_delete=models.CASCADE)#the post to like
+# 	likes = models.PositiveIntegerField(null=True,blank = True)
 
-	def __str__(self):
-		return self.user.username
+# 	def __str__(self):
+# 		return self.user.username
 
-	@classmethod
-	def retrieve_post_likes(cls,post_id):
-		post_likes = Likes.objects.filter(post=post_id)
-		return post_likes
+# 	@classmethod
+# 	def retrieve_post_likes(cls,post_id):
+# 		post_likes = Likes.objects.filter(post=post_id)
+# 		return post_likes
 
-	@classmethod
-	def number_of_likes(cls,post_id):
-		post = Likes.objects.filter(post=post_id)
-		likes = post.aggregate(Sum('likes')).get('likes_sum',0)
-		return likes
+# 	@classmethod
+# 	def number_of_likes(cls,post_id):
+# 		post = Likes.objects.filter(post=post_id)
+# 		likes = post.aggregate(Sum('likes')).get('likes_sum',0)
+# 		return likes
 
 class Comments(models.Model):
 	user = models.ForeignKey(User,on_delete=models.CASCADE)#THE USER

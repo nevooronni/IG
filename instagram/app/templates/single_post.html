@@ -20,7 +20,7 @@
               <a href="{% url 'like' post.id %}"><i class="glyphicon glyphicon-heart"  id="likes"></i></a>
               <a href="{% url 'comment' post.id %}" class="glyphicon
               glyphicon-comment"></i></a>
-              <p id="l">{{post.like_count}} Likes</p>
+              <p id="l">{{like_count}} Likes</p>
               <h3>comments</a></h3>
               {% for comment in comments %}
               <h5>
