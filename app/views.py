@@ -104,7 +104,7 @@ def edit_profile(request):
 		if profile_form.is_valid():
 			profile_form.save()
 
-			# return redirect(reverse(profile)
+			return redirect(profile)
 
 	else:	
 
