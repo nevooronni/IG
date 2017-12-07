@@ -9,11 +9,11 @@
     <a href="{% url 'post' %}"><button type="submit" class="btn">Post</button></a>
   </div>
     <div class="container">
-      <!-- {% if profiles %} -->
-        <h3>Suggestions For You {{profiles|length}} people</h3>
-        <a href="{% url 'suggestions' %}"><h3>See All</h3></a>
-      <!-- {% endif %} -->
       {% if following_posts %}
+        {% if profiles %}
+          <h3>Suggestions For You {{profiles|length}} people</h3>
+          <a href="{% url 'suggestions' %}"><h3>See All</h3></a>
+        {% endif %}
         {% for follow in following_posts %}
         <div class="row">
           <div class="col-md-10 col-lg-10">
@@ -39,7 +39,8 @@
         {% endfor %}
       {% else %}
         <h2 class="text-center" id="blue">You are not following anyone.</h2>  
-        <h3>Suggestions for you.</h3>
+        <h3>Suggestions for you. {{profiles|length}} people</h3>
+        <a href="{% url 'suggestions' %}"><h3>See All</h3></a>
         {% for profile in profiles %}
         <div class="row">
           <div class="col-md-1">
