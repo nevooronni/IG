@@ -103,7 +103,6 @@ def edit_profile(request):
 	
 		if profile_form.is_valid():
 			profile_form.save()
-
 			return redirect(profile)
 
 	else:	
