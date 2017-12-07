@@ -45,3 +45,7 @@ h1 {
 #inline {
   display: inline;
 }
+
+#seeall {
+  float: right;
+}

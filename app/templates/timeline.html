@@ -38,9 +38,11 @@
         </div>
         {% endfor %}
       {% else %}
-        <h2 class="text-center" id="blue">You are not following anyone.</h2>  
+        <h2 class="text-center" id="blue">You are not following anyone.</h2>
+        {% if profiles %}  
         <h3>Suggestions for you. {{profiles|length}} people</h3>
-        <a href="{% url 'suggestions' %}"><h3>See All</h3></a>
+        <a href="{% url 'suggestions' %}" id="seeall"><h3>See All</h3></a>
+        {% endif %}
         {% for profile in profiles %}
         <div class="row">
           <div class="col-md-1">
