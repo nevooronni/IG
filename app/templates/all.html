@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-7">
           <div>
-            <img src="{{profile.photo_url|default_if_none:'/profile/images.png'}}" alt="profile photo" class="img-responsive" id="">
+            <img src="{{profile.photo_url|default_if_none:'/profile/images.png'}}" alt="No profile photo" class="img-responsive" id="">
             <h3>{{profile.user.username}}</h3>
             <a href="{% url 'follow' profile.id %}" class="follow"><button>Follow</button></a>
           </div>
