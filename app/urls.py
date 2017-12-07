@@ -14,6 +14,7 @@ urlpatterns=[
 		url(r'^like/(\d+)',views.like, name="like"),
 		url(r'^comment/(\d+)',views.comment,name = "comment"),
 ]
+urlpatterns +=staticfiles_urlpatterns()
 
 if settings.DEBUG:
 	urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
