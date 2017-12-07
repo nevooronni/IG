@@ -9,10 +9,10 @@
     <a href="{% url 'post' %}"><button type="submit" class="btn">Post</button></a>
   </div>
     <div class="container">
-      {% if profiles %}
+      <!-- {% if profiles %} -->
         <h3>Suggestions For You {{profiles|length}} people</h3>
         <a href="{% url 'suggestions' %}"><h3>See All</h3></a>
-      {% endif %}
+      <!-- {% endif %} -->
       {% if following_posts %}
         {% for follow in following_posts %}
         <div class="row">
