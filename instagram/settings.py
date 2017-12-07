@@ -26,7 +26,7 @@ SECRET_KEY = 'vi$skol*=4mreooh4x2g_u!@&p!yb8p1(3fdsju&_qd31@d108'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['iginstagram.herokuapp.com']
 
 LOGIN_REDIRECT_URL = ('/')
 
