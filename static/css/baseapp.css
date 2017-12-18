@@ -112,3 +112,138 @@ h1 {
   left: 52.5%;
 }
 
+#signup {
+  color: #999;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+  margin-left: 30px;
+}
+
+#singup2 {
+  color: #999;
+  font-weight: bold;
+  font-size: ;
+  display: inline-block; 
+}
+
+#facebook {
+  background-color: #3897f0;
+  width: 280px;
+  margin-top: 10px;
+  color: #fff;
+  border-radius: 0px;
+  margin-left: 0px;
+  margin-bottom: 25px;
+}
+
+#icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+#signuppanel {
+  width: 390px;
+  margin-top: 50px;
+  border-radius: 0px;
+}
+
+#insta {
+  margin-left: 11px;
+}
+
+#signupbody {
+  width: 308px;
+  margin-top: 14px;
+  margin-left: 42px;
+  border-radius: 0px;
+}
+
+#signup2 {
+  background-color: #3897f0;
+  width: 280px;
+  margin-top: 10px;
+  color: #fff;
+  border-radius: 0px;
+  margin-left: 0px;
+  margin-bottom: 25px; 
+}
+
+#showd2 {
+  border-style: solid;
+  border-width: 0.20px;
+  width: 390px;
+  border-color: #ddd;
+}
+
+#copyright2 {
+  margin-top: 60px;
+  color: #999;
+}
+
+#navbarinsta {
+  height: 80px;
+  border-bottom-style: solid;
+  border-bottom-color: #ddd;
+}
+
+#buttonheader {
+  background-color: transparent;
+  color: #000;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: #003569;
+  border-radius: 0px;
+  margin-left: 84%;
+}
+
+#igig {
+  font-size: 36px;
+}
+
+#imgtop {
+  margin-top: 7px;
+}
+
+#searchform {
+  margin-top: 3.2%;
+  margin-left: 73.8%;
+}
+
+#input {
+  width: 200px;
+  height: 30px;
+  border-radius: 3px;
+  font-size: 15px;
+  padding-left: 40%;
+}
+
+#searchbutton {
+  border-style: none;
+  background-color: transparent;
+  margin-left: -150px;
+}
+
+#searchfont {
+  color: #ccc;
+}
+
+#badcamp {
+  font-size: 25px;
+  color: #000;
+  margin-top: 6.5%;
+  margin-right: 5%;
+}
+
+#material {
+  font-size: 27px;
+  color: #000;
+  margin-top: 6.5%;
+  margin-right: 5%;
+}
+
+#user {
+  font-size: 25px;
+  color: black;
+  margin-top: 6.5%; 
+}
