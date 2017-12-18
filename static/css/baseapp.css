@@ -49,3 +49,66 @@ h1 {
 #seeall {
   float: right;
 }
+
+#loginpanel {
+  width: 350px;
+  margin-top: 140px;
+  border-radius: 0px;
+}
+
+#login {
+  width: 260px;
+  background-color: #3897f0;
+  font-size: 15px;
+  color: #fff;
+}
+
+#panelbody {
+  width: 290px;
+  margin-left: 30px;
+  border-radius: 0px;
+}
+
+#showd {
+  border-style: solid;
+  border-width: 0.20px;
+  width: 350px;
+  border-color: #ddd;
+}
+
+.margin-top {
+  margin-top: 10px;
+}
+
+#getapp {
+  margin-top: 24px;
+  margin-left: 105px;
+  font-size: 16px;
+}
+
+.stores {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+#stores {
+  padding-left: 35px;
+  padding-right: 30px;
+}
+
+#imgd {
+  margin-top: 74px;
+  margin-left: 130px;
+}
+
+#copyright {
+  margin-top: 40px;
+  color: #999;
+}
+
+#myCarousel {
+  position: absolute;
+  top: 26%;
+  left: 52.5%;
+}
+

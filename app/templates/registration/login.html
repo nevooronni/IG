@@ -1,41 +1,77 @@
 {% extends "registration/base.html" %}
 {% load bootstrap3 %}
+{% load static %}
 {% block content %}
 <div class="container">
   <div class="row">
     <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-6 col-sm-12">
+      <img src="{% static 'img/phone.png' %}" alt="phone image" class="" height="640px" width="470px" id='imgd'>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="{% static 'img/slide1.jpg' %}" alt="slide1">
+          </div>
+
+          <div class="item">
+            <img src="{% static 'img/slide2.jpg' %}" alt="slide2">
+          </div>
+
+          <div class="item">
+            <img src="{% static 'img/slide3.jpg' %}" alt="slide3">
+          </div>
+
+          <div class="item">
+            <img src="{% static 'img/slide4.jpg' %}" alt="slide4">
+          </div>
+
+          <div class="item">
+            <img src="{% static 'img/slide5.jpg' %}" alt="slide5">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
       {% if form.errors %}
         <p> Password or Username is incorrect </p>
       {% endif %}
-      <div class="panel panel-default">
+      <div class="panel panel-default" id="loginpanel">
 
-        <div class="panel-heading">
-          <h3 class="text-center">Sign In</h3>
-        </div>
-        <div class="panel-body">
-
+        <div class="panel-body" id="panelbody">
+          <img src="{% static 'img/ig.png' %}" alt="logo" height="50px" width="250px" class="img-responsive">
           <form  action="/accounts/login/" method="post">
             {% csrf_token %}
-            {% bootstrap_form form%}
+            {% bootstrap_form form %}
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              <input type="submit" class="btn btn-primary btn-sm" value="Log in" id="login">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
-            <p>No account? Sign up here.</p><a href="/accounts/register">Sign Up</a>
             </div>
           </form>
-
         </div>
-
+        <div class="panel-body" id="showd">
+          <div class="form-group">
+            <p class="text-center margin-top">Don't have an account? <a href="/accounts/register">Sign Up</a></p>
+          </div>
+        </div>
+        <div id="stores">
+          <p id="getapp">Get the app.</p>
+          <a href="" class="stores"><img src="{% static 'img/apple.png' %}" alt="apple store logo" class="img-responsive" height="40px" width="140px"></a>
+          <a href="" class="stores"><img src="{% static 'img/google.png' %}" alt="google store logo" class="img-responsive" height="40px" width="140px"></a>
+        </div>
       </div>
-
     </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
+    <h5 class="text-center" id="copyright">© 2017 Instagram</h5>
   </div>
 </div>
 
