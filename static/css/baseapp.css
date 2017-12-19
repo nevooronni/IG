@@ -22,18 +22,25 @@ h1 {
 }
 
 .glyphicon-heart {
+  margin-top: 15px;
+  margin-left: 17px;
   font-size: 28px;
-  color: red;
+  color: #fff;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 .glyphicon-comment {
   font-size: 28px;
-  color: black;
-  margin-left: 14px;
+  color: #fff;
+  margin-left: 15px;
+  text-shadow: -2px 2px black, 2px 2px black, 2px 2px black, 2px -2px black;
 }
 
 #l {
-  margin-left: 7px;
+  margin-left: 18px;
+  margin-top: 10px;
+  color: #000;
+  font-weight: bold;
 }
 
 #side {
@@ -183,8 +190,12 @@ h1 {
 
 #navbarinsta {
   height: 80px;
+  width: 100%;
+  background-color: #fff;
   border-bottom-style: solid;
   border-bottom-color: #ddd;
+  position: fixed;
+  z-index: 4;
 }
 
 #buttonheader {
@@ -230,20 +241,144 @@ h1 {
 
 #badcamp {
   font-size: 25px;
-  color: #000;
+  color: #fff;
   margin-top: 6.5%;
   margin-right: 5%;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 #material {
   font-size: 27px;
-  color: #000;
+  color: #fff;
   margin-top: 6.5%;
   margin-right: 5%;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 #user {
   font-size: 25px;
   color: black;
   margin-top: 6.5%; 
+}
+
+#headingcolor {
+  background-color: transparent;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+#inline {
+  display: inline;
+  margin-left: 8px;
+  color: #000;
+  font-weight: bold;
+}
+
+#profimage {
+  display: inline;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+#postimage {
+  height: 580px;
+  width: 690px;
+}
+
+#bodyp {
+  padding: 0px;
+}
+
+#downdown {
+  margin-top: 100px;
+}
+
+#ccolor {
+  color: grey;
+  margin-left: 17px;
+}
+
+#default {
+  width: 610px;
+}
+
+#tt {
+  padding-top: 130px;
+  width: 100%;
+}
+
+#left {
+  padding-left: 85px;
+}
+
+#default2 {
+  width: 20%;
+  height: 90%;
+  margin-left: -45px;
+  border-style: none;
+  position: fixed;
+}
+
+#tagbar {
+  padding-left: 0px;
+}
+
+#postimage2 {
+  height: 80px;
+  width: 200px;
+}
+
+#profimage2 {
+  display: inline-block;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+
+#story {
+  display: inline-block;
+  color: grey;
+  font-weight: bold;
+}
+
+#watch {
+  display: inline-block;
+  color: #000;
+  font-weight: bold;
+  float: right;
+}
+
+#headingcolor2 {
+  background-color: transparent;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-style: none;
+}
+
+.hr {
+  border: none;
+  height: 1px;
+  color: grey; /* old IE */
+  background-color: #ddd; /* Modern Browsers */
+}
+
+.grey {
+  color: grey;
+}
+
+#inline2 {
+  display: inline-block;
+  float: ;
+  color: #000;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+#upup {
+  margin-bottom: 12px;
+}
+
+#scroll {
+  overflow: scroll;
 }
