@@ -3,23 +3,29 @@
   {% load static %}
   {% block content %}
   {{block.super}}
-  <div class="container">
-    {% for profile in profiles %}
-      <div class="row">
-        <div class="col-md-1">
+      <div class="row" id="allrow">
+        <div class="col-md-3">
         </div>
-        <div class="col-md-7">
-          <div>
-            <img src="{{profile.photo_url|default_if_none:'/profile/images.png'}}" alt="No profile photo" class="img-responsive" id="">
-            <h3>{{profile.user.username}}</h3>
-            <a href="{% url 'follow' profile.id %}" class="follow"><button>Follow</button></a>
+        <div class="col-md-6" id="allpad">
+          <div id="alldiv">
+            <img src="{% static 'img/logof.png' %}" alt="facebook logo" class="img-responsive" id="allimg2">
+            <span id="allinline">
+              <h4 id="connect">Connect to Facebook</h4>
+              <h5 id="cinline">Follow your friends</h5>
+            </span>
+            <a href="" class="follow" id="allbutton"><button class="btn" id="followb">Follow</button></a>
           </div>
+          <h4 id="sg">Suggested</h4>
+          {% for profile in profiles %}
+          <div id="alldiv">
+            <img src="{{profile.photo_url|default_if_none:'/profile/images.png'}}" alt="No profile photo" class="img-responsive" id="allimg">
+            <h4 id="allinline">{{profile.user.username}}</h4>
+            <a href="{% url 'follow' profile.id %}" class="follow" id="allbutton"><button class="btn" id="followb">Follow</button></a>
+          </div>
+          {% endfor %}
         </div>
         <div class="col-md-3">
         </div>
-        <div class="col-md-1">
-        </div>
       </div>
-    {% endfor %}
-  </div>
+    
   {% endblock %}

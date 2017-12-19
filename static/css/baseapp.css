@@ -382,3 +382,76 @@ h1 {
 #scroll {
   overflow: scroll;
 }
+
+#inbox {
+  font-size: 40px;
+  color: #000;
+}
+
+#makepost {
+  margin-left: 55%;
+  background-color: transparent;
+}
+
+#allrow {
+  padding-top: 150px;
+}
+
+#alldiv {
+  height: 90px;
+  width: 80%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ddd;
+  padding-top: 9px;
+  padding-left: 15px;
+}
+
+#allimg2 {
+  margin-top: -25px;
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#allimg {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+  display: inline-block; 
+}
+
+#allinline {
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+#connect {
+  font-weight: bold;
+}
+
+#followb {
+  float: right;
+  margin-top: 15px;
+  margin-right: 18px;
+  width: 80px;
+  background-color: #3897f0;
+  color: #fff;
+  border-radius: 4px;
+}
+
+#allpad {
+  padding-left: 20px;
+}
+
+#sg {
+  margin-top: 40px;
+  color: #999;
+}
+
+#cinline {
+  margin-top: -6px;
+  color: #999;
+}
