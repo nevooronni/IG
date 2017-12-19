@@ -150,6 +150,9 @@ def follow(request,id):
 
 @login_required(login_url = '/accounts/login/')
 def suggestions(request):
+	
+	tags = Tags.retrieve_tags()
+
 	try:
 		current_user = request.user
 
@@ -175,7 +178,7 @@ def suggestions(request):
 	# 			following_posts.append(post)
 
 
-	return render(request, 'all.html', {"profiles":profiles,"user":current_user})
+	return render(request, 'all.html', {"profiles":profiles,"user":current_user,"tags":tags})
 
 @login_required(login_url = '/accounts/login/')
 def like(request,pk):

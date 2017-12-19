@@ -395,11 +395,12 @@ h1 {
 
 #allrow {
   padding-top: 150px;
+  width: 100%;
 }
 
 #alldiv {
   height: 90px;
-  width: 80%;
+  width: 90%;
   border-style: solid;
   border-width: 1px;
   border-color: #ddd;
@@ -439,6 +440,7 @@ h1 {
   width: 80px;
   background-color: #3897f0;
   color: #fff;
+  font-weight: bold;
   border-radius: 4px;
 }
 
@@ -453,5 +455,23 @@ h1 {
 
 #cinline {
   margin-top: -6px;
+  color: #999;
+}
+
+#tagging {
+  display: inline-block;
+  color: #003569;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+#lowlow {
+  margin-top: 80px;
+  margin-left: 35px;
+}
+
+#copyright2 {
+  margin-top: 10px;
+  margin-right: 20%;
   color: #999;
 }

@@ -13,7 +13,7 @@
               <h4 id="connect">Connect to Facebook</h4>
               <h5 id="cinline">Follow your friends</h5>
             </span>
-            <a href="" class="follow" id="allbutton"><button class="btn" id="followb">Follow</button></a>
+            <a href="https://www.facebook.com/login.php?skip_api_login=1&api_key=124024574287414&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv1.0%2Fdialog%2Foauth%3Fredirect_uri%3Dhttps%253A%252F%252Fwww.instagram.com%252Faccounts%252Fsignup%252F%26state%3D%257B%2522fbLoginKey%2522%253A%2522v3lhjzfd4c6q1t4nmwz1q6tzs3rpxf74fx0499101onrgjpcxy2%2522%252C%2522fbLoginReturnURL%2522%253A%2522%252Fexplore%252Fpeople%252F%2522%257D%26scope%3Demail%26response_type%3Dcode%252Cgranted_scopes%26client_id%3D124024574287414%26ret%3Dlogin%26logger_id%3Dbf2bc868-f521-dde2-1d9e-ac674fbc81c6&cancel_url=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fsignup%2F%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%26state%3D%257B%2522fbLoginKey%2522%253A%2522v3lhjzfd4c6q1t4nmwz1q6tzs3rpxf74fx0499101onrgjpcxy2%2522%252C%2522fbLoginReturnURL%2522%253A%2522%252Fexplore%252Fpeople%252F%2522%257D%23_%3D_&display=page&locale=en_GB&logger_id=bf2bc868-f521-dde2-1d9e-ac674fbc81c6" class="follow" id="allbutton"><button class="btn" id="followb">Connect</button></a>
           </div>
           <h4 id="sg">Suggested</h4>
           {% for profile in profiles %}
@@ -23,6 +23,12 @@
             <a href="{% url 'follow' profile.id %}" class="follow" id="allbutton"><button class="btn" id="followb">Follow</button></a>
           </div>
           {% endfor %}
+          <div id="lowlow">
+          {% for tag in tags %}
+            <h6 id="tagging">{{tag.title}}</h6>
+          {% endfor %}
+            <h6 class="text-center" id="copyright2">© 2017 INSTAGRAM</h6>
+          </div>
         </div>
         <div class="col-md-3">
         </div>
