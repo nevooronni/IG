@@ -17,7 +17,33 @@
               <div class="col-md-12">
                 <h3 id="username">{{user.username}}</h3>
                 <a href="{% url 'edit_profile' %}" id="editprofile"><button class="btn" id="editbutton">Edit Profile</button></a>
-                <i class=""></i>
+                <i class="fa fa-cog" aria-hidden="true" id="cog" data-toggle="modal" data-target="#myModal"></i>
+
+                  <!-- Modal -->
+                  <div id="myModal" class="modal fade" role="dialog">
+                    <button type="button" class="close" data-dismiss="modal" id="closeb">&times;</button>
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content" id="modal-content">
+                        <div class="modal-header">
+                          <a href="/accounts/password/change" class="linkto"><h4 class="text-center">Change Password</h4></a>
+                        </div>
+                        <div class="modal-body">
+                          <h4 class="text-center">Authorized Apps</h4>
+                        </div>
+                        <div class="modal-body">
+                          <h4 class="text-center">Notifications</h4>
+                        </div>
+                        <div class="modal-body">
+                          <a href="/logout" class="linkto"><h4 class="text-center">Log Out</h4></a>
+                        </div>
+                        <div class="modal-body">
+                          <h4 class="text-center" class="close" data-dismiss="modal" id="cancel">Cancel</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
             <div class="row">

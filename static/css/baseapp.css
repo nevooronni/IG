@@ -598,3 +598,145 @@ h1 {
   color: #999;
   margin-left: 38%;
 }
+
+#cog {
+  margin-top: 0px;
+  margin-left: 20px;
+  font-size: 27px;
+  margin-bottom: 0px;
+}
+
+.modal-header {
+  padding-top: 5px;
+  height: 50px;
+}
+
+.modal-header:hover {
+  cursor: pointer;
+}
+
+.modal-body {
+  padding-top: 5px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #ddd;
+  height: 50px;
+}
+
+.modal-body:hover {
+  cursor: pointer;
+}
+
+#myModal {
+  border-radius: 0px;
+  padding-top: 0px;
+}
+
+#modal-content {
+  margin-top: 55%;
+  border-radius: 0px;
+  width: 500px;
+}
+
+#cancel:hover {
+  cursor: pointer;
+}
+
+#closeb {
+  color: #fff;
+  font-size: 38px;
+  opacity: 1.0;
+  margin-right: 8px;
+}
+
+#closeb:hover {
+  cursor: pointer;
+}
+
+.linkto {
+  text-decoration: none;
+  color: #333;
+}
+
+.linkto:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.editm {
+  margin-top: 9%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ddd;
+  padding-bottom: 3%;
+  height: 770px;
+}
+
+.editm2 {
+  height: 10%;
+  padding-top: 6%;
+  
+}
+
+.editm2:hover {
+  border-width: 3px;
+  border-left-style: solid;
+  border-color: #000;
+}
+
+.lm {
+  margin-left: 13%;
+}
+
+.lm:hover {
+  font-weight: bold;
+}
+
+.none {
+  text-decoration: none;
+  color: #000;
+}
+
+.none:hover {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#editprofpic {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+}
+
+#inline5 {
+  display: inline-block;
+  font-weight: bold;
+  color: #000;
+  font-size: 20px;
+  margin-left: 3%;
+}
+
+#edittop {
+  margin-top: 4%;
+  margin-bottom: 5%;
+}
+
+#editform {
+  display: block;
+  font-weight: bold;
+}
+
+#editpad {
+  padding-left: 22%;
+}
+
+#editsubmit {
+  background-color: #3897f0;
+  color: #fff;
+  font-weight: bold;
+  width: 18%;
+  margin-left: 23%;
+  margin-top: 4%;
+}

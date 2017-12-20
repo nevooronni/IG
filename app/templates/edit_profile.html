@@ -2,18 +2,55 @@
 
 {% block content %}
   {{block.super}}
-  <div class="container">
     <div class="row">
-      <h1>Edit Profile</h1>
-
-      <form action="{% url 'edit_profile' %}" method="post">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <button type="submit">Save Changes</button>
-      </form>
+      <div class="col-md-2"></div>
+      <div class="col-md-2 editm">
+        <div class="row editm2">
+          <a href="{% url 'edit_profile' %}" class="none"><h4 class="text-left lm">Edit Profile</h4></a>
+        </div>
+        <div class="row editm2">
+          <a href="/accounts/password/change" class="none"><h4 class="text-left lm">Change Password</h4></a>
+        </div>
+        <div class="row editm2">
+           <a href="#" class="none"><h4 class="text-left lm">Authorized Applications</h4></a>
+        </div>
+        <div class="row editm2">
+          <a href="#" class="none"><h4 class="text-left lm">Commnents</h4></a> 
+        </div>
+        <div class="row editm2">
+          <a href="#" class="none"><h4 class="text-left lm">Manage Contacts</h4></a> 
+        </div>
+      </div>
+      <div class="col-md-6 editm">
+        <div class="row" id="edittop">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <img src="{{user.profile.photo.url}}" alt="profie pic" class="img-responsive" id="editprofpic">
+            <p id="inline5">{{user.username}}</p>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" id="editpad">
+            <form action="{% url 'edit_profile' %}" method="post" id="editform">
+              {% csrf_token %}
+              {{ user_form.as_p }}
+              {{ profile_form.as_p }}
+              <button type="submit" class="btn" id="editsubmit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>  
     </div>
-  </div>
-
-
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" id="padpad">
+        {% for tag in tags %}
+          <h5 id="tagprofile">{{tag.title}}</h5>
+        {% endfor %}
+          <h5 id="copyright3">© 2017 Instagram</h5>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
 {% endblock %}

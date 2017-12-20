@@ -97,19 +97,23 @@ def profile(request):
 @login_required(login_url = '/accounts/login/')
 def edit_profile(request):
 	user = request.user
-
+	tags = Tags.retrieve_tags()
+	user_form = UserForm(request.POST or None, instance=request.user.profile, files=request.FILES)
 	if request.method == 'POST':
 		profile_form = ProfileForm(request.POST, instance=request.user.profile, files=request.FILES)
-	
-		if profile_form.is_valid():
+		
+
+		if profile_form.is_valid() and user_form.is_valid():
+			user_form.save()
 			profile_form.save()
 			return redirect(profile)
 
 	else:	
 
 		profile_form = ProfileForm(instance=request.user.profile)
+		user_form = UserForm(instance=request.user.profile)
 
-	return render(request, 'edit_profile.html',{"profile_form":profile_form,"user":user})
+	return render(request, 'edit_profile.html',{"profile_form":profile_form,"user_form":user_form,"user":user,"tags":tags})
 
 @login_required(login_url = '/accounts/login/')
 def post(request):
