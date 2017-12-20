@@ -4,36 +4,69 @@
   {{block.super}}
   <div class="container profile">
     <div class="row">
-      <div class="col-md-12">
-        {% if profile %}
-        <img src="{{profile.profile_pic.url}}" alt="profile pic">
-        {% endif %}
-        <h3>{{user.username}}</h3>
-        <a href="{% url 'edit_profile' %}" class="btn btn-primary">edit profile</a>
-        <p>{{posts|length}} posts</p>
-        {% if following %}
-        <p>0 followers</p> 
-        <p>{{following|length}}  following</p>
-        {% endif %}
+      <div class="col-md-2"></div>
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-4">
+            {% if profile %}
+            <img src="{{user.profile.photo.url}}" alt="profile pic" id="imagesize">
+            {% endif %}
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12">
+                <h3 id="username">{{user.username}}</h3>
+                <a href="{% url 'edit_profile' %}" id="editprofile"><button class="btn" id="editbutton">Edit Profile</button></a>
+                <i class=""></i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12" id="bottom">
+                <p id="length"><strong>{{posts|length}}</strong> posts</p>
+                {% if following %}
+                  <p id="followers"><strong>{{followers|length}}</strong> followers</p> 
+                  <p id="following"><strong>{{following|length}}</strong> following</p>
+                {% else %}
+                  <p id="followers"><strong>0</strong> followers</p>
+                  <p id="following"><strong>0</strong> following</p>
+                {% endif %}
+                <p id="useremail"><strong>{{user.email}}</strong></p>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="col-md-3"></div>
     </div>
-    {% if posts %}
-    <div class="container">
-    <div class="row">
-      <div class="col-md-12" style="display: inline;">
-          <h4>POSTS</h4>
+    <div class="row" id="postrow">
+      <div class="col-md-2"></div>
+      <div class="col-md-7" id="bordertop">
+        <div class="row" id="moredown">
+          <div class="col-md-12">
+            <button class="btn" id="headerpost">POSTS</button>
+          </div>
+        </div>
+        {% if posts %}
+        <div class="row">
           {% for post in posts %}
-            <img src="{{post.photo.url}}" alt="posted photo" class="img-responsive" height="200px" width="300px" style="display: inline;">
-            <h4>{{post.caption}}</h4>
+          
+            <div class="col-sm-6 col-md-4 col-lg-4" id="postsdiv">
+              <img src="{{post.photo.url}}" alt="posted photo" class="img-responsive" id="profposts">
+            </div>
           {% endfor %}
+        </div>
         {% else %}
-          <h3>You have not posted anything yet</h3>
+          <h3 class="text-center">You have not posted anything yet</h3>
         {% endif %}
+        <div class="col-md-12" id="padpad">
         {% for tag in tags %}
-          <h5>{{tag.title}}</h5>
+          <h5 id="tagprofile">{{tag.title}}</h5>
         {% endfor %}
+          <h5 id="copyright3">© 2017 Instagram</h5>
+        </div>
       </div>
+      <div class="col-md-3"></div>
     </div>
-  </div>
   </div>
 {% endblock %}

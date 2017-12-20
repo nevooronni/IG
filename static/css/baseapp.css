@@ -16,11 +16,6 @@ h1 {
   border-radius: 50%;
 }
 
-#following {
-  float: right;
-  margin-top: -45px;
-}
-
 .glyphicon-heart {
   margin-top: 15px;
   margin-left: 17px;
@@ -474,4 +469,132 @@ h1 {
   margin-top: 10px;
   margin-right: 20%;
   color: #999;
+}
+
+.profile {
+  padding-top: 170px;
+}
+
+#imagesize {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+#top {
+  display: inline-block;
+  margin-left: 100px;
+  padding-top: 0px;
+}
+
+#username {
+  color: #000;
+  font-size: 30px;
+  display: inline-block;
+  margin-top: -120px;
+}
+
+#editprofile {
+  display: inline-block;
+  margin-left: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ddd;
+}
+
+#editbutton {
+  background-color: transparent;
+  color: #000;
+  font-weight: bold;  
+  width: 140px;
+  height: 30px;
+  padding-top: 4px;
+}
+
+#bottom {
+  display: inline-block;
+  padding-top: 0px;
+  margin-top: 20px;
+}
+
+#length {
+  display: inline-block;
+  font-size: 18px;
+  margin-right: 30px;
+}
+
+#followers {
+  display: inline-block; 
+  font-size: 18px;
+  margin-right: 30px;
+}
+
+#following {
+  display: inline-block;
+  margin-top: 0px;
+  font-size: 18px;
+  margin-right: 30px;
+}
+
+#useremail {
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+#postrow {
+  margin-top: 60px;
+}
+
+#bordertop {
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #ddd;
+}
+
+#headerpost {
+  margin-left: 50%;
+  background-color: transparent;
+  border-top-style: solid;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-top-color: #000;
+  border-top-width: 2px;
+  border-radius: 0px;
+  color: #000;
+  font-weight: bold;
+}
+
+#postsdiv {
+  margin-bottom: 20px;
+}
+
+#moredown {
+  margin-bottom: 20px;
+}
+
+#profposts {
+  height: 300px;
+  width: 350px;
+}
+
+#tagprofile {
+  color: #003569;
+  font-weight: bold;
+  margin-right: 19px;
+  display: inline-block;
+}
+
+#padpad {
+  margin-top: 40px;
+  padding-left: 46px;
+  display: inline-block;
+  padding-bottom: 30px;
+}
+
+#copyright3 {
+  display: inline-block;
+  margin-top: 30px;
+  color: #999;
+  margin-left: 38%;
 }
