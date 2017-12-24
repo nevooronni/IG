@@ -34,9 +34,37 @@
         {% endif %}
       </div>
       <div class="col-md-2 col-lg-2" id="tagbar">
-        <div>
-          
-        </div>
+          <div class="panel panel-default" id="default2">
+            <div class="panel-heading" id="headingone">
+              <img src="{{user.profile.photo.url}}" alt="{{user.profile.username}}" class="img-responsive" id="profimage2">
+              <a href=""><p id="inline2">{{user.username}}</p></a>
+            </div>
+            <div clas="panel-heading">
+              <h5 class="block" id="stories">Stories</h5>
+              <h5 class="block" id="watch">Watch All</h5>
+            </div>
+            <div class="panel-body" id="scrollbody">
+            {% for profile in profiles %}
+              <div id="scrollmargin">
+                <img src="{{profile.photo.url}}" alt="{{profile.user.username}}" class="img-responsive" id="profimage2">
+                <a href=""><p id="inline2">{{profile.user.username}}</p></a> 
+              </div>
+            {%  endfor %}    
+            </div> 
+             <div class="panel-body">
+              <h6 class="block2">About Us</h6>
+              <h6 class="block2">Support</h6>
+              <h6 class="block2">Blog</h6>
+              <h6 class="block2">Press</h6>
+              <h6 class="block2">API</h6>
+              <h6 class="block2">Jobs</h6>
+              <h6 class="block2">Privacy</h6>
+              <h6 class="block2">Terms</h6>
+              <h6 class="block2">Directoty</h6>
+              <h6 class="block2">Language</h6>
+              <h5 id="copyright4">© 2017 INSTAGRAM</h5>
+             </div>
+          </div>
       </div>
       <div class="col-md-2 col-lg-2">
       </div>

@@ -740,3 +740,61 @@ h1 {
   margin-left: 23%;
   margin-top: 4%;
 }
+
+#default2 {
+  margin-left: -50px;
+  width: 300px;
+  height: 750px;
+}
+
+#profimage2 {
+  display: inline;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+
+#inline2 {
+  display: inline;
+  color: #000;
+  margin-left: 10px; 
+}
+
+.block {
+  display: inline-block;
+  margin-top: 6%;
+}
+
+.block2 {
+  display: inline-block;
+  margin-top: 0px;
+  color: #999;
+}
+
+#stories {
+  color: grey;
+}
+
+#watch {
+  float: right;
+  color: #333;
+}
+
+#copyright4 {
+  display: inline-block;
+  margin-top: 0px;
+  color: #999;
+  margin-left: 0px;
+}
+
+#headingone {
+  background-color: transparent;
+}
+
+#scrollbody {
+  overflow: scroll;
+}
+
+#scrollmargin {
+  margin-bottom: 7%;
+}

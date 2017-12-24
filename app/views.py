@@ -9,6 +9,7 @@ from liked.models import Like
 
 @login_required(login_url = '/accounts/login/')
 def timeline(request):
+
 	#profile section 
 	try:
 		current_user = request.user
