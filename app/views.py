@@ -121,8 +121,11 @@ def post(request):
 	current_user = request.user
 	current_profile = current_user.profile
 
+	tags = Tags.retrieve_tags()
+
 	if request.method == 'POST':
 		form = NewPostForm(request.POST,request.FILES)
+		comment_form = CommentForm(request.POST,request.FILES)
 
 		if form.is_valid():
 			post = form.save(commit=False)#commit your post
@@ -139,7 +142,7 @@ def post(request):
 
 		form = NewPostForm()
 
-	return render(request, 'post.html', {"form":form,"current_user":current_user})
+	return render(request, 'post.html', {"form":form,"current_user":current_user,"tags":tags})
 
 @login_required(login_url = '/accounts/login/')
 def follow(request,id):
@@ -199,8 +202,10 @@ def like(request,pk):
 
 @login_required(login_url='/accounts/register')
 def single_post(request,id):
+	current_user = request.user
+	profiles = Profile.retrieve_other_profiles(current_user.id)
+
 	try:
-		current_user = request.user
 		current_post = Post.objects.get(id=id)
 		comments = Comments.retrieve_post_comments(id)
 		# no_of_likes = Likes.number_of_likes(post_id=id)
@@ -209,7 +214,7 @@ def single_post(request,id):
 	except ObjectDoesNotExist:
 		raise Http404()
 
-	return render(request, 'single_post.html', {"post":current_post,"comments":comments,"like_count":like_count})
+	return render(request, 'single_post.html', {"profiles":profiles,"post":current_post,"comments":comments,"like_count":like_count})
 
 @login_required(login_url='/accounts/register')
 def comment(request,id):
