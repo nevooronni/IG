@@ -220,6 +220,8 @@ def single_post(request,id):
 def comment(request,id):
 	current_user = request.user
 	current_post = Post.objects.get(id=id)
+	tags = Tags.retrieve_tags()
+
 
 	form = CommentForm(request.POST)
 	if request.method == 'POST':
@@ -236,7 +238,7 @@ def comment(request,id):
 		else:
 			form = CommentForm()
 
-	return render(request,'comment.html',{"form":form,"current_post":current_post})
+	return render(request,'comment.html',{"tags":tags,"form":form,"current_post":current_post})
 
 
 
