@@ -26,10 +26,10 @@
         </div>
         {% endfor %}
         {% else %}
-        <h2 class="text-center" id="blue">You are not following anyone.</h2>
+        <h3 class="text-left" id="blue">You are not following anyone.</h3>
         {% if profiles %}  
         <h3>Suggestions for you. {{profiles|length}} people</h3>
-        <a href="{% url 'suggestions' %}" id="seeall"><h3>See All</h3></a>
+        <h3><a href="{% url 'suggestions' %}" id="">See All</a></h3>
         {% endif %}
         {% endif %}
       </div>

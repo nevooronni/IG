@@ -82,6 +82,8 @@ def profile(request):
 
 	posts = Post.retrieve_posts()#get all posts 
 
+	user_posts = Post.retrieve_user_posts(user_id=current_user)
+
 	following_posts = []#empty array that will be for posts or the profiles you follow
 
 	for follow in following:
@@ -93,7 +95,7 @@ def profile(request):
 				following_posts.append(post)
 
 
-	return render(request, 'profile.html', {"posts":posts,"tags":tags,"profile":profile,"following":following,"user":current_user,"following_posts":following_posts})
+	return render(request, 'profile.html', {"user_posts":user_posts,"posts":posts,"tags":tags,"profile":profile,"following":following,"user":current_user,"following_posts":following_posts})
 
 @login_required(login_url = '/accounts/login/')
 def edit_profile(request):

@@ -73,9 +73,9 @@
             <button class="btn" id="headerpost">POSTS</button>
           </div>
         </div>
-        {% if posts %}
+        {% if user_posts %}
         <div class="row">
-          {% for post in posts %}
+          {% for post in user_posts %}
           
             <div class="col-sm-6 col-md-4 col-lg-4" id="postsdiv">
               <img src="{{post.photo.url}}" alt="posted photo" class="img-responsive" id="profposts">
