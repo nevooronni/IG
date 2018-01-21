@@ -10,6 +10,7 @@ django-tinymce==2.6.0
 django-vote==2.1.5
 gunicorn==19.7.1
 olefile==0.44
+path.py==10.5
 phonenumberslite==8.8.6
 Pillow==4.3.0
 psycopg2==2.7.3.2
