@@ -32,6 +32,10 @@ LOGIN_REDIRECT_URL = ('/')
 
 # Application definition
 
+ALLOWED_HOSTS = [
+    'iginstagram.herokuapp.com',
+]
+
 INSTALLED_APPS = [
     'app.apps.AppConfig',
     'django.contrib.admin',
@@ -44,7 +48,6 @@ INSTALLED_APPS = [
     'tinymce',
     'vote',
     'liked',
-    'iginstagram.herokuapp.com',
 ]
 
 MIDDLEWARE = [
