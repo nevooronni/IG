@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'tinymce',
     'vote',
     'liked',
-
+    'iginstagram.herokuapp.com',
 ]
 
 MIDDLEWARE = [
