@@ -33,7 +33,7 @@ LOGIN_REDIRECT_URL = ('/')
 # Application definition
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
+    'iginstagram.herokuapp.com',
 ]
 
 INSTALLED_APPS = [
