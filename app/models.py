@@ -130,10 +130,10 @@ class Post(models.Model):
 		user_posts = Post.objects.filter(user=user_id).all()
 		return user_posts
 
-	@property
-	def image_url(self):
-		if self.photo and hasattr(self.photo, 'url'):#return whether an object has an attribute with the same name
-			return self.photo.url
+	@property 
+	def photo_url(self):
+		if self.photo and hasattr(self.photo, 'url'):
+			return self.photo.url	
 
 class Follow(models.Model):
 	user = models.ForeignKey(User)#defines the user

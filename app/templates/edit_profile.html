@@ -32,7 +32,7 @@
         </div>
         <div class="row">
           <div class="col-md-12" id="editpad">
-            <form action="{% url 'edit_profile' %}" method="post" id="editform">
+            <form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data" id="editform">
               {% csrf_token %}
               {{ user_form.as_p }}
               {{ profile_form.as_p }}

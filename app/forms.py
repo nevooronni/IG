@@ -16,12 +16,7 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = ('bio','website','phone_number','email','photo','gender')
-
-class ProfilePicForm(forms.ModelForm):
-	class Meta:
-		model = Profile
-		fields = ('photo',)
+		fields = ('bio','website','email','phone_number','photo','gender',)
 
 class CommentForm(forms.ModelForm):
 	class Meta:

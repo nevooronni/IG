@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import NewPostForm,UserForm,ProfileForm,ProfilePicForm,CommentForm
+from .forms import NewPostForm,UserForm,ProfileForm,CommentForm
 from django.contrib.auth.decorators import login_required
 from .models import Post,Profile,Tags,Follow,Comments
 from django.contrib.auth.models import User
@@ -100,15 +100,15 @@ def profile(request):
 @login_required(login_url = '/accounts/login/')
 def edit_profile(request):
 	user = request.user
+	current_profile = user.profile
 	tags = Tags.retrieve_tags()
 	user_form = UserForm(request.POST or None, instance=request.user.profile, files=request.FILES)
 	if request.method == 'POST':
 		profile_form = ProfileForm(request.POST, instance=request.user.profile, files=request.FILES)
-		
 
 		if profile_form.is_valid() and user_form.is_valid():
 			user_form.save()
-			profile_form.save()
+			profile_form.save(commit=False)
 			return redirect(profile)
 
 	else:	
@@ -116,7 +116,27 @@ def edit_profile(request):
 		profile_form = ProfileForm(instance=request.user.profile)
 		user_form = UserForm(instance=request.user.profile)
 
-	return render(request, 'edit_profile.html',{"profile_form":profile_form,"user_form":user_form,"user":user,"tags":tags})
+	# current_user = request.user
+	# current_profile = current_user.profile
+
+	# tags = Tags.retrieve_tags()
+
+	# if request.method == 'POST':
+	# 	form = ProfileForm(request.POST,request.FILES)
+
+	# 	if form.is_valid():
+	# 		profile = form.save(commit=False)
+	# 		profile.user = current_user
+	# 		profile.profile = current_profile
+	# 		profile.save()	
+
+	# 		return redirect(profile)
+
+	# else:
+
+	# 	form = ProfileForm()
+		
+	return render(request, 'edit_profile.html',{"profile_form":profile_form,"user":user,"tags":tags})
 
 @login_required(login_url = '/accounts/login/')
 def post(request):
